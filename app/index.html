@@ -15,19 +15,27 @@
         <div class="col-md-2">
             <!--Sidebar content-->
             <!-- Search: <input ng-model="query"> -->
-            {{dropdown1_title}}&nbsp;<select ng-model="producer">
+            <p>{{dropdown1_title}}</p>
+            <p><select ng-model="producer">
                 <option value="">Не выбрано</option>
-                <option ng-repeat="phone in phones"
-                        value="{{phone.producer}}">{{phone.producer}}
+                <option ng-repeat="producer in dropdown1_uniq"
+                        value="{{producer}}">{{producer}}
                 </option>
-            </select>
+            </select></p>
+            <p>{{dropdown2_title}}</p>
+            <p> <select ng-model="color">
+                <option value="">Не выбрано</option>
+                <option ng-repeat="color in dropdown2_uniq"
+                        value="{{color}}">{{color}}
+                </option>
+            </select></p>
         </div>
         <div class="col-md-10">
             <!--Body content-->
 
             <ul class="phones">
                 <!-- <li ng-repeat="phone in phones | filter:query"> -->
-                <li ng-repeat="phone in phones | filter:producer">
+                <li ng-repeat="phone in phones | filter:producer | filter:color">
                     {{phone.name}}
                     <p>{{phone.about}}
                     Цвет: {{phone.color}}

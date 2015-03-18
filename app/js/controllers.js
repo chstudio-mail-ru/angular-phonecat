@@ -3,9 +3,16 @@
 /* Controllers */
 var phonecatApp = angular.module('phonecatApp', []);
 
+function unique(arr, key) {
+    var obj = {};
+    for (var i = 0; i < arr.length; i++) {
+        obj[arr[i][key]] = true;
+    }
+    return Object.keys(obj);
+}
+
 phonecatApp.controller('PhoneListCtrl', function($scope) {
     $scope.title = 'Телефоны';
-    $scope.dropdown1_title = 'Производитель';
 	$scope.phones = [
 		{'name': 'Nokia 3310',
             'price': 1500,
@@ -28,4 +35,10 @@ phonecatApp.controller('PhoneListCtrl', function($scope) {
             'color': 'Оранжевый',
             'about': 'Навороченный телефон'}
 	];
+
+    $scope.dropdown1_title = 'Производитель:';
+    $scope.dropdown2_title = 'Цвет:';
+
+    $scope.dropdown1_uniq = unique($scope.phones, 'producer');
+    $scope.dropdown2_uniq = unique($scope.phones, 'color');
 });
