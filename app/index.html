@@ -2,7 +2,7 @@
 <html lang="en" ng-app="phonecatApp">
 <head>
   <meta charset="utf-8">
-  <title>My HTML File</title>
+  <title>Тестовое задание</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/angular/angular.js"></script>
@@ -10,6 +10,35 @@
 </head>
 <body ng-controller="PhoneListCtrl">
 <h3>{{title}}</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            <!-- Search: <input ng-model="query"> -->
+            {{dropdown1_title}}&nbsp;<select ng-model="producer">
+                <option value="">Не выбрано</option>
+                <option ng-repeat="phone in phones"
+                        value="{{phone.producer}}">{{phone.producer}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+
+            <ul class="phones">
+                <!-- <li ng-repeat="phone in phones | filter:query"> -->
+                <li ng-repeat="phone in phones | filter:producer">
+                    {{phone.name}}
+                    <p>{{phone.about}}
+                    Цвет: {{phone.color}}
+                    Цена: {{phone.price}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!--
 <ul>
 	<li ng-repeat="phone in phones">
 		<span>{{phone.name}}</span>
@@ -22,5 +51,6 @@
         <td>{{i+1}}</td>
     </tr>
 </table>
+-->
 </body>
 </html>
